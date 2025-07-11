@@ -4,9 +4,9 @@ import logo from '../assets/logo-divino-reviews2.png';
 const Header = () => {
   return (
     <header style={styles.header}>
-      <div style={styles.left}>
+    <div style={styles.left}>
         <img src={logo} alt="diVino Logo" style={styles.logox} />
-      </div>
+    </div>
 
       <nav style={styles.nav}>
         <a href="#" style={styles.link}>Home</a>
@@ -18,6 +18,8 @@ const Header = () => {
       <div style={styles.right}>
         <button style={styles.userBtn}>👤</button>
       </div>
+
+
     </header>
   );
 };
@@ -25,10 +27,14 @@ const Header = () => {
 const styles = {
   header: {
     backgroundColor: 'white',
-    position: 'sticky',
+    //position: 'sticky',
+    position: 'fixed',
     top: 0,
+    left: 0,
+    width: '100%',
     zIndex: 100,
-    width: '100vw',
+    //width: '100vw',
+    overflowX: 'hidden',
     boxSizing: 'border-box',
     padding: '1rem 0',
     display: 'flex',
@@ -42,6 +48,7 @@ const styles = {
     zIndex: 1,  // per sicurezza sopra nav
   },
   logox: {
+    marginLeft: 10,
     height: '3.2rem',
     objectFit: 'contain',
   },
