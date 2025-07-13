@@ -15,10 +15,6 @@ const Header = () => {
         <a href="#" style={styles.link}>Contact</a>
       </nav>
 
-      <div style={styles.right}>
-        <button style={styles.userBtn}>👤</button>
-      </div>
-
 
     </header>
   );
@@ -65,17 +61,6 @@ const styles = {
     textDecoration: 'none',
     color: '#333',
     fontWeight: '500',
-  },
-  right: {
-    display: 'flex',
-    alignItems: 'center',
-    zIndex: 1,
-  },
-  userBtn: {
-    fontSize: '1.5rem',
-    background: 'none',
-    border: 'none',
-    cursor: 'pointer',
   },
 };
 

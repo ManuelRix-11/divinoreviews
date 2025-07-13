@@ -11,8 +11,10 @@ const Footer = () => {
           <h3 style={footerStyles.logo}>DiVino_V2</h3>
           <p style={footerStyles.lightText}>
             Università degli studi di Salerno<br />
-            84084, Fisciano (SA)
+            84084, Fisciano (SA) 
           </p>
+           <p style={footerStyles.authors}>Authors: <br />
+            Iommazzo Camilla, Ragozzini Emanuele.</p>
         </div>
 
       
@@ -82,6 +84,12 @@ const footerStyles = {
     fontSize: '0.9rem',
     lineHeight: '1.5',
     marginLeft:'2rem'
+  },
+    authors: {
+    textAlign: 'left',
+    color: '#aaa',
+    fontSize: '0.8rem',
+    marginLeft:'2rem',
   },
   sectionTitle: {
     color: '#aaa',
