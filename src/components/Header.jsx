@@ -1,7 +1,16 @@
 import React from 'react';
 import logo from '../assets/logo-divino-reviews2.png';
+import { useNavigate } from 'react-router-dom';
+
 
 const Header = () => {
+   const navigate = useNavigate();
+
+  const handleNavigation = (e, path) => {
+    e.preventDefault(); 
+    navigate(path);
+  };
+
   return (
     <header style={styles.header}>
     <div style={styles.left}>
@@ -9,8 +18,8 @@ const Header = () => {
     </div>
 
       <nav style={styles.nav}>
-        <a href="#" style={styles.link}>Home</a>
-        <a href="#" style={styles.link}>Reviews</a>
+        <a href="/" style={styles.link} onClick={(e) => handleNavigation(e, '/')}>Home</a>
+        <a href="/review" style={styles.link} onClick={(e) => handleNavigation(e, '/review')}>Reviews</a>
         <a href="#" style={styles.link}>About</a>
         <a href="#" style={styles.link}>Contact</a>
       </nav>

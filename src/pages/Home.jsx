@@ -5,14 +5,20 @@ import bannerImage from '../assets/bannaer-vino.png'; // usa il tuo path reale
 import redWine from '../assets/diVino-Rosso.png';
 import whiteWine from '../assets/diVino-Bianco.png';
 import roseWine from '../assets/diVino-Rose.png';
-import wine1 from '../assets/wine1.png';
-import wine2 from '../assets/wine2.png';
+import { useNavigate } from 'react-router-dom';
 import wine3 from '../assets/wine3.png';
 import wine4 from '../assets/wine4.png';
 import wine5 from '../assets/wine5.png';
 import './Home.css'
 
 const Home = () => {
+const navigate = useNavigate();
+
+  const handleNavigation = (e, path) => {
+    e.preventDefault(); 
+    navigate(path);
+  };
+
   return (
     <>
 
@@ -25,7 +31,7 @@ const Home = () => {
           <h6 style={styles.descText}>Real authentic reviews, comapre ratings, and find the perfect
              wine for every occasion.
           </h6>
-          <button style={styles.ctaButton}>Drink Up!</button>
+          <button style={styles.ctaButton} onClick={(e) => handleNavigation(e, '/review')}>Drink Up!</button>
         </div>
       </div>
 
@@ -65,7 +71,7 @@ const Home = () => {
         
         <div style={styles.reviewTextBox}>
           <h1 style={styles.reviewTitle}>50+ of the newest amazing reviews</h1>
-          <button style={styles.newestButton}>Explore Now</button>
+          <button style={styles.newestButton} onClick={(e) => handleNavigation(e, '/review')}>Explore Now</button>
         </div>
 
         
@@ -144,7 +150,7 @@ const styles = {
  bannerText: {
     fontSize: '2.93rem',
     fontWeight: '750',
-    color: '#B3261E',
+    color: '#8C113B',
     margin: 0,
     textAlign: 'left',    
     marginBottom: 'auto',  
@@ -152,7 +158,7 @@ const styles = {
   },
 
   newestButton: {
-    backgroundColor: '#B3261E',
+    backgroundColor: '#8C113B',
     color: '#F5F5F5',
     border: 'none',
     marginTop: '1.7rem',
@@ -166,7 +172,7 @@ const styles = {
   },
 
   ctaButton: {
-    backgroundColor: '#B3261E',
+    backgroundColor: '#8C113B',
     color: '#F5F5F5',
     border: 'none',
     padding: '1.2rem 3rem',  // bottone più corto in orizzontale
@@ -201,7 +207,7 @@ cardContainer: {
 
 card: {
   backgroundColor: 'transparent',
-  borderRadius: '12px',
+  borderRadius: '16px',
   padding: '1.8rem',
   display: 'flex',
   flexDirection: 'column',
@@ -210,8 +216,7 @@ card: {
   height: '400px',   
   cursor: 'pointer',              
   transition: 'transform 0.3s ease, scale 0.3s ease',    
-  overflow: 'hidden',             // <--- IMPORTANTE!
-  borderRadius: '16px',  
+  overflow: 'hidden',             
 },
 
 cardImage: {
