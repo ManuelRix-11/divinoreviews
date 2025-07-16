@@ -136,17 +136,17 @@ const styles = {
     textAlign: 'left',
     letterSpacing: '1px',
   },
- descText: {
-  marginTop: '0.5rem',      // Avvicina al titolo
-  marginBottom: '1rem',     // Spazio prima del bottone
-  color: '#444444',
-  fontWeight: '600',
-  fontSize: '1rem',
-  textAlign: 'left',
-  letterSpacing: '0.5px',
-  marginLeft: '0',          // opzionale: rimuovi lo shift a sinistra
-  padding: 0,               // niente padding verticale
-},
+  descText: {
+    marginTop: '0.5rem',      // Avvicina al titolo
+    marginBottom: '1rem',     // Spazio prima del bottone
+    color: '#444444',
+    fontWeight: '600',
+    fontSize: '1rem',
+    textAlign: 'left',
+    letterSpacing: '0.5px',
+    marginLeft: '0',          // opzionale: rimuovi lo shift a sinistra
+    padding: 0,               // niente padding verticale
+  },
  bannerText: {
     fontSize: '2.93rem',
     fontWeight: '750',
@@ -182,116 +182,114 @@ const styles = {
     alignSelf: 'flex-start',   
     fontWeight: '630',
 
+    },
+    rangeSection: {
+    marginTop: '1rem', // spazio sotto il banner (dato che è fixed)
+    padding: '3rem 2rem',
+    textAlign: 'center',
+    backgroundColor: '#fff',
+    marginBottom:'1rem'
   },
-  rangeSection: {
-  marginTop: '1rem', // spazio sotto il banner (dato che è fixed)
-  padding: '3rem 2rem',
-  textAlign: 'center',
-  backgroundColor: '#fff',
-  marginBottom:'1rem'
-},
 
-rangeTitle: {
-  fontSize: '2rem',
-  fontWeight: '700',
-  color: '#222',
-  marginBottom: '2rem',
-},
+  rangeTitle: {
+    fontSize: '2rem',
+    fontWeight: '700',
+    color: '#222',
+    marginBottom: '2rem',
+  },
 
-cardContainer: {
-  display: 'flex',
-  justifyContent: 'center',
-  gap: '2rem',
-  flexWrap: 'wrap',
-},
+  cardContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    gap: '2rem',
+    flexWrap: 'wrap',
+  },
 
-card: {
-  backgroundColor: 'transparent',
-  borderRadius: '16px',
-  padding: '1.8rem',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  width: '300px',               
-  height: '400px',   
-  cursor: 'pointer',              
-  transition: 'transform 0.3s ease, scale 0.3s ease',    
-  overflow: 'hidden',             
-},
+  card: {
+    backgroundColor: 'transparent',
+    borderRadius: '16px',
+    padding: '1.8rem',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    width: '300px',               
+    height: '400px',   
+    cursor: 'pointer',              
+    transition: 'transform 0.3s ease, scale 0.3s ease',    
+    overflow: 'hidden',             
+  },
 
-cardImage: {
-  height: '95%',
-  width: '90%',
- // objectFit: 'contain',
-  marginBottom: '0.5rem',
-  objectFit: 'cover',             // <--- riempie lo spazio visivamente
-  borderRadius: '16px',           // <--- Arrotonda anche l’immagine
-},
+  cardImage: {
+    height: '95%',
+    width: '90%',
+  // objectFit: 'contain',
+    marginBottom: '0.5rem',
+    objectFit: 'cover',             // <--- riempie lo spazio visivamente
+    borderRadius: '16px',           // <--- Arrotonda anche l’immagine
+  },
 
-cardLabel: {
-  fontSize: '1.1rem',
-  fontWeight: '600',
-  color: '#333',
-},
+  cardLabel: {
+    fontSize: '1.1rem',
+    fontWeight: '600',
+    color: '#333',
+  },
 
-reviewBanner: {
-  display: 'flex',
-  backgroundColor: '#f2f2f2', // grigio chiaro
-  padding: '3rem 4rem',
-  gap: '2rem',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  flexWrap: 'wrap',
-},
+  reviewBanner: {
+    display: 'flex',
+    backgroundColor: '#f2f2f2', // grigio chiaro
+    padding: '3rem 4rem',
+    gap: '2rem',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    flexWrap: 'wrap',
+  },
 
-reviewTextBox: {
-  flex: '1 1 30%',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'flex-start',
-  justifyContent: 'center',
-},
+  reviewTextBox: {
+    flex: '1 1 30%',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+  },
 
-reviewTitle: {
-  fontSize: '2.5rem',
-  fontWeight: '700',
-  color: '#000',
-  marginBottom: '1.5rem',
-  textAlign: 'left',
-},
+  reviewTitle: {
+    fontSize: '2.5rem',
+    fontWeight: '700',
+    color: '#000',
+    marginBottom: '1.5rem',
+    textAlign: 'left',
+  },
 
-imageCollage: {
-  flex: '1 1 65%',
-  display: 'grid',
-  gridTemplateColumns: '1fr',
-  gridTemplateRows: '60% 40%',
-  height: '400px',
-  gap: '1rem',
-},
+  imageCollage: {
+    flex: '1 1 65%',
+    display: 'grid',
+    gridTemplateColumns: '1fr',
+    gridTemplateRows: '60% 40%',
+    height: '400px',
+    gap: '1rem',
+  },
 
-collageTopImage: {
-  width: '100%',
-  height: '100%',
-  objectFit: 'cover',
-  borderRadius: '12px',
-  aspectRatio: '1', // for square shape
-},
+  collageTopImage: {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    borderRadius: '12px',
+    aspectRatio: '1', // for square shape
+  },
 
-collageBottomRow: {
-  display: 'grid',
-  gridTemplateColumns: '1fr 2fr',
-  height: '100%',
-  gap: '1rem',
-},
+  collageBottomRow: {
+    display: 'grid',
+    gridTemplateColumns: '1fr 2fr',
+    height: '100%',
+    gap: '1rem',
+  },
 
-collageImage: {
-  width: '100%',
-  height: '60%',
-  objectFit: 'cover',
-  borderRadius: '12px',
-},
-
-
+  collageImage: {
+    width: '100%',
+    height: '60%',
+    objectFit: 'cover',
+    borderRadius: '12px',
+  },
 
 };
 
