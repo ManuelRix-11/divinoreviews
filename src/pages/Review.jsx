@@ -1,11 +1,12 @@
 import Header from '../components/header';
 //import Footer from '../components/Footer';
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { getAllReviews } from '../scripts/getAllReviews';
 import ReviewCard from '../components/reviewCard';
 
 const Review = () => {
-
+  const navigate = useNavigate(); 
   console.debug("sono arrivato nelle reccensioni ");
   const [reviews, setReviews] = useState([]);
   const [page, setPage] = useState(1);
@@ -59,12 +60,36 @@ const Review = () => {
           );
         })}
       </div>
+
+      {/* Bottone fluttuante per aggiungere una nuova review */}
+      <img
+        src="https://img.icons8.com/?size=100&id=24717&format=png&color=000000"
+        alt="Add Review"
+        style={styles.floatingButton}
+        onClick={() => navigate('/add-review')} // <-- Cambia path se diverso
+      />
+
     </div>
     </>
   );
 };
 
 const styles = {
+  floatingButton: {
+    position: 'fixed',
+    bottom: '2rem',
+    right: '2rem',
+    width: '64px',
+    height: '64px',
+    cursor: 'pointer',
+    zIndex: 999, // sopra tutto
+    transition: 'transform 0.2s ease-in-out',
+    boxShadow: '0 4px 10px rgba(0, 0, 0, 0.2)',
+    borderRadius: '50%',
+    backgroundColor: 'trasparent',
+    padding: '0.5rem',
+    objectFit: 'contain',
+  },
   wrapper: {
     padding: '2rem',
     fontFamily: 'Arial, sans-serif',
