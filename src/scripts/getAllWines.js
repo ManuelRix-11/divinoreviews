@@ -8,7 +8,7 @@ export const getAllWines = async () => {
       throw new Error('Errore nel recupero dei vini');
     }
     const data = await response.json();
-    console.log(JSON.stringify(data));
+    console.debug(JSON.stringify(data));
     return data;
   } catch (error) {
     console.error('Errore nella fetch dei vini:', error);

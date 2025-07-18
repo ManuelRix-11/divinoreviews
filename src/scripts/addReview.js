@@ -1,6 +1,6 @@
 // src/services/addReview.js
 
-const API_URL = 'http://localhost:3000/review'; // Modifica con l’URL corretto se diverso
+const API_URL = 'http://localhost:3000/review'; 
 
 export const addReview = async (reviewData) => {
   try {

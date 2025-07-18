@@ -1,8 +1,11 @@
 import React from 'react';
 import { deleteReview } from '../scripts/deleteReview';
+import { useNavigate } from 'react-router-dom';
+
 
 
 const ReviewCard = ({ review, onDelete  }) => {
+  const navigate = useNavigate();
   const wine = review.wine || {};
   const taster = review.taster || {};
   const initials = taster?.taster_name
@@ -19,14 +22,14 @@ const ReviewCard = ({ review, onDelete  }) => {
       <div style={styles.content}>
 
         <div style={styles.iconsWrapper}>
-          <div style={styles.iconBox}>
+          <div style={styles.iconBox} onClick={() =>  navigate(`/reviewEdit/${review.id}`)}>
             <img
               src="https://img.icons8.com/?size=100&id=zqRKVWtC1VeY&format=png&color=000000"
               alt="edit"
               style={styles.icon}
-              // You can add handleEdit here later
             />
           </div>
+
           <div style={styles.iconBox} onClick={handleDelete}>
             <img
               src="https://img.icons8.com/?size=100&id=G5tVUZwFOBWx&format=png&color=000000"

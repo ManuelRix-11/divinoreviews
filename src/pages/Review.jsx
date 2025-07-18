@@ -1,26 +1,31 @@
 import Header from '../components/header';
-//import Footer from '../components/Footer';
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { getAllReviews } from '../scripts/getAllReviews';
 import ReviewCard from '../components/reviewCard';
 
 const Review = () => {
-  const navigate = useNavigate(); 
-  console.debug("sono arrivato nelle reccensioni ");
-  const [reviews, setReviews] = useState([]);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Leggi le recensioni passate tramite navigate state (se ci sono)
+  const passedReviews = location.state?.reviews || null;
+  const passedVariety = location.state?.variety || null;
+
+  const [reviews, setReviews] = useState(passedReviews || []);
   const [page, setPage] = useState(1);
 
-  const loadReviews = async (pageNumber) => {
-    console.debug("sto per chiamare la getallreviews");
-    const data = await getAllReviews(pageNumber, 15);
-    setReviews(data);
-    console.debug(JSON.stringify(data));
-  };
-
+  // Se ho recensioni passate, salto la fetch paginata
   useEffect(() => {
-    loadReviews(page);
-  }, [page]);
+    if (!passedReviews) {
+      // Solo se non ci sono recensioni passate faccio la fetch normale
+      const loadReviews = async (pageNumber) => {
+        const data = await getAllReviews(pageNumber, 15);
+        setReviews(data);
+      };
+      loadReviews(page);
+    }
+  }, [page, passedReviews]);
 
   const handlePageChange = (newPage) => {
     if (newPage !== page) {
@@ -28,7 +33,7 @@ const Review = () => {
     }
   };
 
-   const handleDelete = (id) => {
+  const handleDelete = (id) => {
     setReviews((prev) => prev.filter((r) => r.id !== id));
   };
 

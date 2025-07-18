@@ -1,6 +1,6 @@
 import Header from "../components/header";
 import Footer from "../components/Footer"
-import React from 'react';
+import React ,{ useEffect, useState }from 'react';
 import bannerImage from '../assets/bannaer-vino.png'; // usa il tuo path reale
 import redWine from '../assets/diVino-Rosso.png';
 import whiteWine from '../assets/diVino-Bianco.png';
@@ -13,10 +13,23 @@ import './Home.css'
 
 const Home = () => {
 const navigate = useNavigate();
+const [selectedVariety, setSelectedVariety] = useState("");
 
   const handleNavigation = (e, path) => {
     e.preventDefault(); 
     navigate(path);
+  };
+
+  const handleClick = async (variety) => {
+    try {
+      setSelectedVariety(variety);
+      const response = await fetch(`http://localhost:3000/review/variety/${variety}`);
+      const data = await response.json();
+      console.log('dati per varieta:'+data);
+      navigate('/review', { state: { reviews: data, variety } });
+    } catch (error) {
+      console.error("Errore nel recupero delle recensioni:", error);
+    }
   };
 
   return (
@@ -43,21 +56,21 @@ const navigate = useNavigate();
 
           <a href="#review-red" style={{ textDecoration: 'none' }}>
             <div className="wine-card" style={styles.card}>
-              <img src={redWine} alt="Red Wine" style={styles.cardImage} />
+              <img src={redWine} alt="Red Wine" style={styles.cardImage} onClick={()=> handleClick("red")}/>
               <p style={styles.cardLabel}>Red</p>
             </div>
           </a>
 
           <a href="#review-white" style={{ textDecoration: 'none' }}>
             <div className="wine-card" style={styles.card}>
-              <img src={whiteWine} alt="White Wine" style={styles.cardImage} />
+              <img src={whiteWine} alt="White Wine" style={styles.cardImage}  onClick={() => handleClick("white")}/>
               <p style={styles.cardLabel}>White</p>
             </div>
           </a>
 
           <a href="#review-rose" style={{ textDecoration: 'none' }}>
             <div className="wine-card" style={styles.card}>
-              <img src={roseWine} alt="Rosé Wine" style={styles.cardImage} />
+              <img src={roseWine} alt="Rosé Wine" style={styles.cardImage}  onClick={() => handleClick("white")}/>
               <p style={styles.cardLabel}>Rosé</p>
             </div>
           </a>
