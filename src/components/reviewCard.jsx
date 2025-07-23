@@ -46,8 +46,8 @@ const ReviewCard = ({ review, onDelete , variety }) => {
 
 
   const handleDelete = async () => {
-    onDelete(review.id);
-    deleteReview(review.id)
+    onDelete(review._id);
+    deleteReview(review._id)
   }
   
    return (
@@ -55,7 +55,7 @@ const ReviewCard = ({ review, onDelete , variety }) => {
       <div style={styles.content}>
 
         <div style={styles.iconsWrapper}>
-          <div style={styles.iconBox} onClick={() =>  navigate(`/reviewEdit/${review.id}`)}>
+          <div style={styles.iconBox} onClick={() =>  navigate(`/reviewEdit/${review._id}`)}>
             <img
               src="https://img.icons8.com/?size=100&id=zqRKVWtC1VeY&format=png&color=000000"
               alt="edit"
@@ -78,25 +78,24 @@ const ReviewCard = ({ review, onDelete , variety }) => {
         </div>
         <div style={styles.wineTitle}>{wine.title || 'Title not available'}</div>
         
-        <div style={styles.wineDetails}>
+        <div style={styles.wineDetail}>
           {wine.variety || 'Variety not available'} – {wine.winery || 'Winery not available'}<br />
-          {wine.country || 'Country not available'} – {wine.province || 'Province not available'} – {wine.region_1 || ''}
         </div>
 
         <div style={styles.description}>
-           <em>{review.description || 'No description available'}</em>
+           <em>{review.wineDetails.description || 'No description available'}</em>
         </div>
       </div>
 
       <div style={styles.middleSection}>
-        <div style={styles.wineDetails}>
+        <div style={styles.wineDetail}>
           <strong>Varietà:</strong> {review.variety || wine.variety || 'N/A'}<br />
           <strong>Winery:</strong> {review.winery || wine.winery || 'N/A'}<br />
-          <strong>Designation:</strong> {review.designation || 'N/A'}<br />
-          <strong>Prezzo:</strong> {review.price ? `$${review.price}` : 'N/A'}<br />
-          <strong>Paese:</strong> {review.country || 'N/A'}<br />
-          <strong>Provincia:</strong> {review.province || 'N/A'}<br />
-          <strong>Regione:</strong> {[review.region_1, review.region_2].filter(Boolean).join(' – ') || 'N/A'}<br />
+          <strong>Designation:</strong> {review.wineDetails.designation || 'N/A'}<br />
+          <strong>Prezzo:</strong> {review.wineDetails.price ? `$${review.wineDetails.price}` : 'N/A'}<br />
+          <strong>Paese:</strong> {review.wineDetails.country || 'N/A'}<br />
+          <strong>Provincia:</strong> {review.wineDetails.province || 'N/A'}<br />
+          <strong>Regione:</strong> {[review.wineDetails.region_1, review.wineDetails.region_2].filter(Boolean).join(' – ') || 'N/A'}<br />
         </div>
       </div>
 
@@ -186,7 +185,7 @@ const styles = {
     fontSize: '1.1rem',
     marginBottom: '0.5rem',
   },
-  wineDetails: {
+  wineDetail: {
     fontSize: '0.9rem',
     color: '#444',
     marginBottom: 0,

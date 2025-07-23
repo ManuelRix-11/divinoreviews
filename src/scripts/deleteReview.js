@@ -1,6 +1,6 @@
 export async function deleteReview(id) {
   try {
-    console.debug('Deleting review with ID:', id);
+    console.log('Deleting review with ID:', id);
 
     const response = await fetch(`http://localhost:3000/review/${id}`, {
       method: 'DELETE',

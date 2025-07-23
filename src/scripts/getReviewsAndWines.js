@@ -12,7 +12,6 @@ export async function getReviewsAndWines(page = 1, limit = 16) {
         if (!response.ok) throw new Error('Errore nel recupero delle recensioni');
 
         const data = await response.json();
-        console.log("CICCIO:"+ data);
         return data;
 
     } catch (error) {

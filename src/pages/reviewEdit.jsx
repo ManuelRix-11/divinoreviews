@@ -19,9 +19,10 @@ const ReviewEdit = () => {
       try {
         const res = await getReview(id);
         setReview(res.data);
-        setTasterName(res.data.taster?.taster_name || '');
-        setTasterTwitter(res.data.taster?.taster_twitter_handle || '');
-        setPoints(res.data.points || '');
+        console.log('recensione: '+ JSON.stringify(review));
+        setTasterName(res.data._taster?.taster_name || '');
+        setTasterTwitter(res.data._taster?.taster_twitter_handle || '');
+        setPoints(res.data._points || '');
       } catch (error) {
         alert('Errore nel recupero della recensione.');
         navigate('/review'); 
@@ -40,17 +41,17 @@ const ReviewEdit = () => {
     }
 
     const reviewData = {
-      _id: review.id,
+      _id: review._id,
       points: parseInt(points),
       taster: {
         taster_name: tasterName,
         taster_twitter_handle: tasterTwitter || ''
       },
       wine: {
-        _id: review.wine?.id || '',
-        title: review.wine.title,
-        variety: review.wine.variety,
-        winery: review.wine.winery,
+        _id: review.wine?._id || '',
+        title: review._wine.title,
+        variety: review._wine.variety,
+        winery: review._wine.winery,
         points: 0, // richiesto dallo Swagger
         taster_name: '',
         taster_twitterID: ''
@@ -90,7 +91,7 @@ const ReviewEdit = () => {
           <label>Wine</label>
           <input
             type="text"
-            value={`${review.wine.title} (${review.wine.variety} - ${review.wine.winery})`}
+            value={`${review._wine.title} (${review._wine.variety} - ${review._wine.winery})`}
             disabled
           />
 

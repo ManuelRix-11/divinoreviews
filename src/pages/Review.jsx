@@ -21,7 +21,6 @@ const Review = () => {
       // Solo se non ci sono recensioni passate faccio la fetch normale
       const loadReviews = async (pageNumber) => {
         const data = await getReviewsAndWines(pageNumber, 15);
-        console.log("CAZZI:"+ JSON.stringify(data.data) );
         setReviews(data.data);
       };
       loadReviews(page);
@@ -35,7 +34,7 @@ const Review = () => {
   };
 
   const handleDelete = (id) => {
-    setReviews((prev) => prev.filter((r) => r.id !== id));
+    setReviews((prev) => prev.filter((r) => r._id !== id));
   };
 
   return ( 
@@ -45,7 +44,7 @@ const Review = () => {
       <div style={styles.gridContainer}>
         {
         reviews.map((review) => (
-          <ReviewCard key={review.id} review={review} onDelete={handleDelete} variety={passedVariety}/>
+          <ReviewCard key={review._id} review={review} onDelete={handleDelete} variety={passedVariety}/>
         ))
         }
       </div>
