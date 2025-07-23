@@ -77,11 +77,27 @@ const ReviewCard = ({ review, onDelete , variety }) => {
           <strong>{review.points || 'N/A'}pt</strong>
         </div>
         <div style={styles.wineTitle}>{wine.title || 'Title not available'}</div>
+        
         <div style={styles.wineDetails}>
           {wine.variety || 'Variety not available'} – {wine.winery || 'Winery not available'}<br />
           {wine.country || 'Country not available'} – {wine.province || 'Province not available'} – {wine.region_1 || ''}
         </div>
 
+        <div style={styles.description}>
+           <em>{review.description || 'No description available'}</em>
+        </div>
+      </div>
+
+      <div style={styles.middleSection}>
+        <div style={styles.wineDetails}>
+          <strong>Varietà:</strong> {review.variety || wine.variety || 'N/A'}<br />
+          <strong>Winery:</strong> {review.winery || wine.winery || 'N/A'}<br />
+          <strong>Designation:</strong> {review.designation || 'N/A'}<br />
+          <strong>Prezzo:</strong> {review.price ? `$${review.price}` : 'N/A'}<br />
+          <strong>Paese:</strong> {review.country || 'N/A'}<br />
+          <strong>Provincia:</strong> {review.province || 'N/A'}<br />
+          <strong>Regione:</strong> {[review.region_1, review.region_2].filter(Boolean).join(' – ') || 'N/A'}<br />
+        </div>
       </div>
 
       <div style={{...styles.footer,backgroundColor: colorStyles.primary }}>
@@ -95,6 +111,21 @@ const ReviewCard = ({ review, onDelete , variety }) => {
   );
 };
 const styles = {
+
+  middleSection: {
+    backgroundColor: '#f5f0f0',
+    padding: '1rem 1.5rem',
+    borderTopLeftRadius: '2rem',
+    borderTopRightRadius: '2rem',
+  },
+  description: {
+    padding: '1.5rem 1.5rem',
+    fontSize: '0.95rem',
+    color: '#333',
+    lineHeight: 1.5,
+    top:'1rem',
+    minHeight: '40px',
+  },
   card: {
     width: '300px',
     borderRadius: '1rem',
@@ -107,7 +138,7 @@ const styles = {
     margin: '1rem',
   },
   content: {
-    padding: '1.5rem',
+    padding: '1rem 1rem 0 1rem',
     flexGrow: 1,
   },
   iconsWrapper: {
@@ -141,12 +172,7 @@ const styles = {
   stars: {
     color: '#a10044', // bordeaux
   },
-  description: {
-    fontSize: '0.95rem',
-    color: '#333',
-    lineHeight: 1.5,
-    marginBottom: '1rem',
-  },
+ 
   wineInfo: {
     padding: '1.5rem',
     backgroundColor: '#f4e9ee',
@@ -163,7 +189,7 @@ const styles = {
   wineDetails: {
     fontSize: '0.9rem',
     color: '#444',
-    marginBottom: '1rem',
+    marginBottom: 0,
     textAlign: 'left',
    // marginTop:'1rem'
   },
@@ -175,6 +201,8 @@ const styles = {
     padding: '1rem',
     borderBottomLeftRadius: '1rem',
     borderBottomRightRadius: '1rem',
+    borderTopLeftRadius: '1rem',
+    borderTopRightRadius: '1rem',
   },
   avatar: {
     backgroundColor: '#fff',
