@@ -2,15 +2,48 @@ import React from 'react';
 import { deleteReview } from '../scripts/deleteReview';
 import { useNavigate } from 'react-router-dom';
 
+const getColorStyles = (variety) => {
+  switch (variety?.toLowerCase()) {
+    case 'white':
+      return {
+        primary: '#C7B066',   // giallo
+        secondary: '#fff8dc',
+        footerBg: '#d4af37',
+        footerText: '#000',
+        avatarText: '#d4af37',
+        avatarBg: '#fff',
+      };
+    case 'rose':
+      return {
+        primary: '#D16C7D',   // rosa chiaro
+        secondary: '#fff0f5',
+        footerBg: '#ff69b4',
+        footerText: '#fff',
+        avatarText: '#ff69b4',
+        avatarBg: '#fff',
+      };
+    default:
+      return {
+        primary: '#a10044',             // default
+        secondary: '#f4e9ee',
+        footerBg: '#7b003b',
+        footerText: '#fff',
+        avatarText: '#7b003b',
+        avatarBg: '#fff',
+      };
+  }
+};
 
 
-const ReviewCard = ({ review, onDelete  }) => {
+const ReviewCard = ({ review, onDelete , variety }) => {
   const navigate = useNavigate();
   const wine = review.wine || {};
   const taster = review.taster || {};
   const initials = taster?.taster_name
     ? taster.taster_name.split(' ').map((n) => n[0]).join('').toUpperCase()
     : 'NA';
+  const colorStyles = getColorStyles(variety);
+
 
   const handleDelete = async () => {
     onDelete(review.id);
@@ -40,7 +73,7 @@ const ReviewCard = ({ review, onDelete  }) => {
         </div>
 
         <div style={styles.rating}>
-          <span style={styles.stars}>★★★★☆</span>
+          <span style={{...styles.stars, color: colorStyles.primary}}>★★★★☆</span>
           <strong>{review.points || 'N/A'}pt</strong>
         </div>
         <div style={styles.wineTitle}>{wine.title || 'Title not available'}</div>
@@ -51,8 +84,8 @@ const ReviewCard = ({ review, onDelete  }) => {
 
       </div>
 
-      <div style={styles.footer}>
-        <div style={styles.avatar}>{initials}</div>
+      <div style={{...styles.footer,backgroundColor: colorStyles.primary }}>
+        <div style={{...styles.avatar, color: colorStyles.primary}}>{initials}</div>
         <div style={styles.tasterInfo}>
           <span style={styles.tasterName}>{taster.taster_name || 'Anonymous'}</span>
           <span style={styles.tasterHandle}>{taster.taster_twitter_handle || 'No handle'}</span>
@@ -120,6 +153,7 @@ const styles = {
     borderTopLeftRadius: '2rem',
     borderTopRightRadius: '2rem',
     color: '#111',
+    opacity: 0.8,
   },
   wineTitle: {
     fontWeight: 'bold',

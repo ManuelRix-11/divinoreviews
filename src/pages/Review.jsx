@@ -44,7 +44,7 @@ const Review = () => {
       <div style={styles.gridContainer}>
         {
         reviews.map((review) => (
-          <ReviewCard key={review.id} review={review} onDelete={handleDelete}/>
+          <ReviewCard key={review.id} review={review} onDelete={handleDelete} variety={passedVariety}/>
         ))
         }
       </div>

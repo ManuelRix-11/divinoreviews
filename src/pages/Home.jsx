@@ -70,7 +70,7 @@ const [selectedVariety, setSelectedVariety] = useState("");
 
           <a href="#review-rose" style={{ textDecoration: 'none' }}>
             <div className="wine-card" style={styles.card}>
-              <img src={roseWine} alt="Rosé Wine" style={styles.cardImage}  onClick={() => handleClick("white")}/>
+              <img src={roseWine} alt="Rosé Wine" style={styles.cardImage}  onClick={() => handleClick("rose")}/>
               <p style={styles.cardLabel}>Rosé</p>
             </div>
           </a>
