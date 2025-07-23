@@ -1,7 +1,7 @@
 import Header from '../components/header';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { getAllReviews } from '../scripts/getAllReviews';
+import { getReviewsAndWines } from '../scripts/getReviewsAndWines.js';
 import ReviewCard from '../components/reviewCard';
 
 const Review = () => {
@@ -20,8 +20,9 @@ const Review = () => {
     if (!passedReviews) {
       // Solo se non ci sono recensioni passate faccio la fetch normale
       const loadReviews = async (pageNumber) => {
-        const data = await getAllReviews(pageNumber, 15);
-        setReviews(data);
+        const data = await getReviewsAndWines(pageNumber, 15);
+        console.log("CAZZI:"+ JSON.stringify(data.data) );
+        setReviews(data.data);
       };
       loadReviews(page);
     }
